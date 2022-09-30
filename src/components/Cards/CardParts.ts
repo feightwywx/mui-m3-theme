@@ -35,10 +35,7 @@ export const CardRoot = styled(MuiCard, {
     backgroundColor: theme.palette.surface.variant,
     '&:hover': {
       backgroundColor: chroma
-        .mix(
-          chroma(theme.palette.surface.variant).alpha(0.08).hex(),
-          theme.palette.surface.on
-        )
+        .mix(theme.palette.surface.variant, theme.palette.surface.on, 0.08)
         .hex(),
       boxShadow: theme.shadows[2],
       '@media (hover: none)': {
@@ -51,10 +48,7 @@ export const CardRoot = styled(MuiCard, {
     border: `1px solid ${theme.palette.outline.main}`,
     '&:hover': {
       backgroundColor: chroma
-        .mix(
-          chroma(theme.palette.surface.main).alpha(0.08).hex(),
-          theme.palette.surface.on
-        )
+        .mix(theme.palette.surface.main, theme.palette.surface.on, 0.08)
         .hex(),
       boxShadow: theme.shadows[2],
       '@media (hover: none)': {
@@ -73,10 +67,7 @@ export const CardRoot = styled(MuiCard, {
     boxShadow: theme.shadows[2],
     '&:hover': {
       backgroundColor: chroma
-        .mix(
-          chroma(theme.palette.surface.main).alpha(0.08).hex(),
-          theme.palette.surface.on
-        )
+        .mix(theme.palette.surface.main, theme.palette.surface.on, 0.08)
         .hex(),
       boxShadow: theme.shadows[4],
       '@media (hover: none)': {

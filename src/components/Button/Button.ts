@@ -94,7 +94,7 @@ const Button = styled(MuiButton, {
   ...(variant === 'text' &&
     color !== undefined &&
     color !== 'inherit' && {
-      paddingLeft: '12px',
+      paddingLeft: startIcon ? '20px' : '12px', // when start icon, pl=icon.width+pl
       paddingRight: startIcon ? '16px' : '12px',
       '&:hover': {
         backgroundColor: chroma(theme.palette[color].onContainer)
@@ -111,15 +111,15 @@ const Button = styled(MuiButton, {
       },
     }),
   ...(variant === 'tonal' && {
-    backgroundColor: theme.palette.secondary.container,
-    color: theme.palette.secondary.onContainer,
+    backgroundColor: theme.palette[color].container,
+    color: theme.palette[color].onContainer,
     '&:hover': {
       boxShadow: theme.shadows[2],
       backgroundColor: chroma
         .mix(
-          chroma(theme.palette.secondary.onContainer).alpha(0.08).hex(),
-          theme.palette.secondary.container,
-          0.5
+          theme.palette[color].onContainer,
+          theme.palette[color].container,
+          0.92
         )
         .hex(),
       '@media (hover: none)': {
@@ -128,6 +128,13 @@ const Button = styled(MuiButton, {
     },
     '&:active': {
       boxShadow: 'none',
+      backgroundColor: chroma
+        .mix(
+          theme.palette[color].onContainer,
+          theme.palette[color].container,
+          0.88
+        )
+        .hex(),
     },
   }),
 })) as React.ComponentType<MuiButtonProps>;
