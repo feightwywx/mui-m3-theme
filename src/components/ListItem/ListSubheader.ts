@@ -12,6 +12,7 @@ const ListSubheader = styled(MuiListSubheader, {
   color: theme.palette.surface.onVariant,
   backgroundColor: 'transparent',
   fontWeight: 700,
+  fontFamily: 'Roboto',
   fontSize: '14px',
   lineHeight: '20px',
   marginTop: '24px',

@@ -12,8 +12,9 @@ const ListItemText = styled(MuiListItemText, {
   slot: 'Root',
 })<{ active?: boolean }>(({ theme, active }) => ({
   '& .MuiTypography-root': {
-    fontWeight: 700,
+    fontWeight: 500,
     letterSpacing: '-0.2px',
+    fontFamily: 'Roboto',
   },
   ...(active === true && {
     color: theme.palette.secondary.onContainer,

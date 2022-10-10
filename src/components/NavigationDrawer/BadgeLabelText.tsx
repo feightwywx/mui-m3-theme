@@ -10,6 +10,7 @@ function BadgeLabelText(props: BadgeLabelTextProps) {
     <Typography
       variant="body1"
       fontWeight={700}
+      fontFamily="Roboto"
       fontSize="14px"
       sx={{
         mr: 1,

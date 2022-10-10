@@ -11,7 +11,7 @@ const DrawerRoot = styled(MuiDrawer, {
   slot: 'Root',
 })(({ theme }) => ({
   '& .MuiPaper-root': {
-    borderRadius: '16px',
+    borderRadius: '0px 16px 16px 0px',
     backgroundColor: theme.palette.surface.main,
     boxShadow: theme.shadows[2],
     width: '360px',
