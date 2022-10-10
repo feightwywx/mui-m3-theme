@@ -5,11 +5,14 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import chroma from 'chroma-js';
+import TouchRipple, {
+  TouchRippleActions,
+} from '@mui/material/ButtonBase/TouchRipple';
 
 export type M3ListItemProps = MuiListItemProps & { active?: boolean };
 
 // TODO add ripple effect
-const ListItem = styled(MuiListItem, {
+const ListItemRoot = styled(MuiListItem, {
   name: 'M3ListItem',
   slot: 'Root',
 })<{ active?: boolean }>(({ theme, active }) => ({
@@ -60,5 +63,32 @@ const ListItem = styled(MuiListItem, {
   width: '336px', // Active indicator width
   margin: '0 auto',
 })) as React.ComponentType<M3ListItemProps>;
+
+const ListItem = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<M3ListItemProps>
+>(function ListItem(props) {
+  const rippleRef = React.useRef<TouchRippleActions | null>(null);
+  // eslint-disable-next-line react/prop-types
+  const { children, ...other } = props;
+
+  const onRippleStart = (e: React.SyntheticEvent) => {
+    rippleRef.current?.start(e);
+  };
+  const onRippleStop = (e: React.SyntheticEvent) => {
+    rippleRef.current?.stop(e);
+  };
+
+  return (
+    <ListItemRoot
+      onMouseDown={onRippleStart}
+      onMouseUp={onRippleStop}
+      {...other}
+    >
+      <TouchRipple ref={rippleRef} center={false} />
+      {children}
+    </ListItemRoot>
+  );
+});
 
 export default ListItem;
