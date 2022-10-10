@@ -17,7 +17,7 @@ import {
 } from '../../asset';
 import AddIcon from '@mui/icons-material/Add';
 import { Button } from '../Button';
-import Dialog, { DialogTitle, DialogContentText } from './Dialog';
+import Dialog, { DialogTitle, DialogContentText, DialogActionButton } from './Dialog';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -81,8 +81,8 @@ const DialogPreviewTempalte: ComponentStory<typeof Dialog> = (args) => {
                     </DialogContentText>
                   </DialogContent>
                   <DialogActions>
-                    <Button variant="text">Enabled</Button>
-                    <Button variant="text">Enabled</Button>
+                    <DialogActionButton>Enabled</DialogActionButton>
+                    <DialogActionButton>Enabled</DialogActionButton>
                   </DialogActions>
                 </Dialog>
               </Stack>

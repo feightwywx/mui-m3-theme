@@ -59,7 +59,7 @@ export const MaterialDesign3Theme = createTheme({
      * under open source licenses but Product Sans not one of them. [Link](https://fonts.google.com/license/productsans)
      * Manrope font is very similar to Product Sans font.
      */
-    fontFamily: ['Manrope', 'Roboto'].join(', '),
+    fontFamily: ['Roboto', 'Manrope'].join(', '),
   },
   palette: colors,
   components: {
@@ -79,7 +79,7 @@ export const unstable_createMaterialDesign3Theme = (m3Palette: M3Palette) => {
   const muiPalette = convertM3ToMuiPalette(m3Palette);
   return createTheme({
     typography: {
-      fontFamily: ['Manrope'].join(', '),
+      fontFamily: ['Roboto', 'Manrope'].join(', '),
     },
     palette: muiPalette,
     components: {

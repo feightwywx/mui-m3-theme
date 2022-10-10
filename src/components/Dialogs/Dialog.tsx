@@ -5,10 +5,11 @@ import {
   DialogProps as MuiDialogProps,
   DialogTitleProps as MuiDialogTitleProps,
   DialogContentTextProps as MuiDialogContentTextProps,
+  ButtonProps,
 } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
-import chroma from 'chroma-js';
 import React from 'react';
+import { Button } from '../Button';
 
 const DialogRoot = styled(MuiDialog, {
   name: 'M3Dialog',
@@ -16,10 +17,12 @@ const DialogRoot = styled(MuiDialog, {
 })(({ theme }) => ({
   '& .MuiPaper-root': {
     borderRadius: '28px',
+    padding: '8px',
     backgroundColor: theme.palette.surface.main,
     minWidth: '280px',
     maxWidth: '560px',
-    boxShadow: theme.shadows[4],
+    boxShadow: theme.shadows[0],
+    fontFamily: 'Roboto',
   },
 }));
 
@@ -34,7 +37,7 @@ const Dialog = React.forwardRef<
     <DialogRoot ref={ref} open={open} {...other}>
       <div
         style={{
-          backgroundColor: chroma(theme.palette.primary.main).alpha(0.08).hex(),
+          backgroundColor: theme.palette.surface.main,
         }}
       >
         {props.children}
@@ -48,6 +51,8 @@ export const DialogTitle = styled(MuiDialogTitle, {
   slot: 'Root',
 })(({ theme }) => ({
   color: theme.palette.surface.on,
+  fontSize: 24,
+  fontWeight: 400,
 })) as React.ComponentType<MuiDialogTitleProps>;
 
 export const DialogContentText = styled(MuiDialogContentText, {
@@ -56,5 +61,24 @@ export const DialogContentText = styled(MuiDialogContentText, {
 })(({ theme }) => ({
   color: theme.palette.surface.onVariant,
 })) as React.ComponentType<MuiDialogContentTextProps>;
+
+export function DialogActionButton({
+  children,
+  props,
+}: {
+  children: React.ReactNode;
+  // eslint-disable-next-line react/require-default-props
+  props?: React.PropsWithChildren<ButtonProps>;
+}) {
+  return (
+    <Button
+      variant="text"
+      style={{ fontSize: '1rem', fontWeight: 500 }}
+      {...props}
+    >
+      {children}
+    </Button>
+  );
+}
 
 export default Dialog;

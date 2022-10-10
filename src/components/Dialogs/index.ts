@@ -1,1 +1,6 @@
-export { default as Dialog, DialogContentText, DialogTitle } from './Dialog';
+export {
+  default as Dialog,
+  DialogContentText,
+  DialogTitle,
+  DialogActionButton,
+} from './Dialog';

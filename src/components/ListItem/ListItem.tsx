@@ -11,7 +11,6 @@ import TouchRipple, {
 
 export type M3ListItemProps = MuiListItemProps & { active?: boolean };
 
-// TODO add ripple effect
 const ListItemRoot = styled(MuiListItem, {
   name: 'M3ListItem',
   slot: 'Root',
@@ -67,7 +66,7 @@ const ListItemRoot = styled(MuiListItem, {
 const ListItem = React.forwardRef<
   HTMLDivElement,
   React.PropsWithChildren<M3ListItemProps>
->(function ListItem(props) {
+>(function ListItem(props, ref) {
   const rippleRef = React.useRef<TouchRippleActions | null>(null);
   // eslint-disable-next-line react/prop-types
   const { children, ...other } = props;
@@ -89,6 +88,6 @@ const ListItem = React.forwardRef<
       {children}
     </ListItemRoot>
   );
-});
+}) as unknown as React.ForwardRefExoticComponent<M3ListItemProps>;
 
 export default ListItem;
