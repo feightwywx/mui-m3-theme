@@ -4,6 +4,7 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import chroma from 'chroma-js';
+import { mixLayer } from '../../asset/functions';
 
 declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
@@ -32,8 +33,25 @@ const Button = styled(MuiButton, {
   ...(variant === 'contained' &&
     color !== undefined &&
     color !== 'inherit' && {
+      '&:hover': {
+        boxShadow: theme.shadows[1],
+        '@media (hover: none)': {
+          backgroundColor: 'transparent',
+        },
+        color: theme.palette[color].on,
+        backgroundColor: mixLayer(
+          theme.palette[color].main,
+          theme.palette[color].on,
+          0.08
+        ),
+      },
       '&:active': {
-        backgroundColor: chroma(theme.palette[color].main).alpha(0.88).hex(),
+        color: theme.palette[color].on,
+        backgroundColor: mixLayer(
+          theme.palette[color].main,
+          theme.palette[color].on,
+          0.12
+        ),
         boxShadow: 'none',
       },
     }),
@@ -41,29 +59,27 @@ const Button = styled(MuiButton, {
     color !== undefined &&
     color !== 'inherit' && {
       color: theme.palette[color].main,
-      backgroundColor: chroma
-        .mix(
-          chroma(theme.palette[color].onContainer).alpha(0.05).hex('rgb'),
-          theme.palette.surface.main,
-          0.95
-        )
-        .hex('rgb'),
-
+      backgroundColor: theme.palette.surface.main,
+      boxShadow: theme.shadows[1],
       '&:hover': {
-        boxShadow: theme.shadows[3],
+        boxShadow: theme.shadows[2],
         '@media (hover: none)': {
           backgroundColor: 'transparent',
         },
         color: theme.palette[color].main,
-        backgroundColor: chroma(theme.palette[color].onContainer)
-          .alpha(0.08)
-          .hex(),
+        backgroundColor: mixLayer(
+          theme.palette.surface.main,
+          theme.palette[color].main,
+          0.08
+        ),
       },
       '&:active': {
         boxShadow: theme.shadows[1],
-        backgroundColor: chroma(theme.palette[color].onContainer)
-          .alpha(0.12)
-          .hex(),
+        backgroundColor: mixLayer(
+          theme.palette.surface.main,
+          theme.palette[color].main,
+          0.12
+        ),
       },
     }),
   ...(variant === 'outlined' &&
@@ -114,27 +130,23 @@ const Button = styled(MuiButton, {
     backgroundColor: theme.palette[color].container,
     color: theme.palette[color].onContainer,
     '&:hover': {
-      boxShadow: theme.shadows[2],
-      backgroundColor: chroma
-        .mix(
-          theme.palette[color].onContainer,
-          theme.palette[color].container,
-          0.92
-        )
-        .hex(),
+      boxShadow: theme.shadows[1],
+      backgroundColor: mixLayer(
+        theme.palette[color].container,
+        theme.palette[color].onContainer,
+        0.08
+      ),
       '@media (hover: none)': {
         backgroundColor: 'transparent',
       },
     },
     '&:active': {
       boxShadow: 'none',
-      backgroundColor: chroma
-        .mix(
-          theme.palette[color].onContainer,
-          theme.palette[color].container,
-          0.88
-        )
-        .hex(),
+      backgroundColor: mixLayer(
+        theme.palette[color].container,
+        theme.palette[color].onContainer,
+        0.12
+      ),
     },
   }),
 })) as React.ComponentType<MuiButtonProps>;

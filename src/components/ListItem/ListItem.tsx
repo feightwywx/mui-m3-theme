@@ -8,6 +8,7 @@ import chroma from 'chroma-js';
 import TouchRipple, {
   TouchRippleActions,
 } from '@mui/material/ButtonBase/TouchRipple';
+import { mixLayer } from '../../asset/functions';
 
 export type M3ListItemProps = MuiListItemProps & { active?: boolean };
 
@@ -37,23 +38,19 @@ const ListItemRoot = styled(MuiListItem, {
         backgroundColor: 'transparent',
       },
       color: theme.palette.secondary.onContainer,
-      backgroundColor: chroma
-        .mix(
-          theme.palette.secondary.container,
-          theme.palette.secondary.onContainer,
-          0.08
-        )
-        .hex('rgb'),
+      backgroundColor: mixLayer(
+        theme.palette.secondary.container,
+        theme.palette.secondary.onContainer,
+        0.08
+      ),
     },
     '&:active': {
       color: theme.palette.secondary.onContainer,
-      backgroundColor: chroma
-        .mix(
-          theme.palette.secondary.container,
-          theme.palette.secondary.onContainer,
-          0.24
-        )
-        .hex('rgb'),
+      backgroundColor: mixLayer(
+        theme.palette.secondary.container,
+        theme.palette.secondary.onContainer,
+        0.12
+      ),
     },
   }),
   transition: '0.3s',

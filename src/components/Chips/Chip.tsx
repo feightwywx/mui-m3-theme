@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import { Chip as MuiChip, ChipProps as MuiChipProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import chroma from 'chroma-js';
+import { mixLayer } from '../../asset/functions';
 
 type M3ChipProps = MuiChipProps & { checked?: boolean };
 
@@ -32,20 +33,16 @@ const ChipRoot = styled(MuiChip, {
     color: theme.palette.secondary.onContainer,
     border: `1px solid ${theme.palette.secondary.container}`,
     '&:hover': {
-      backgroundColor: `${chroma
-        .mix(
-          chroma(theme.palette.secondary.onContainer).alpha(0.08).hex(),
-          theme.palette.secondary.container,
-          0.92
-        )
-        .hex()} !important`,
-      border: `1px solid ${chroma
-        .mix(
-          chroma(theme.palette.secondary.onContainer).alpha(0.08).hex(),
-          theme.palette.secondary.container,
-          0.92
-        )
-        .hex()} !important`,
+      backgroundColor: `${mixLayer(
+        theme.palette.secondary.container,
+        theme.palette.secondary.onContainer,
+        0.08
+      )} !important`,
+      border: `1px solid ${mixLayer(
+        theme.palette.secondary.container,
+        theme.palette.secondary.onContainer,
+        0.08
+      )} !important`,
       '@media (hover: none)': {
         backgroundColor: 'transparent',
       },
