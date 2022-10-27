@@ -18,6 +18,7 @@ const Fab = styled(MuiFab, {
   slot: 'Root',
 })(({ theme, variant, size, color }) => ({
   boxShadow: theme.shadows[3],
+  textTransform: 'none',
   // fab size
   height: '56px',
   width: '56px',
