@@ -11,13 +11,17 @@ declare module '@mui/material/Fab' {
     info: false;
     warning: false;
   }
+
+  interface FabPropsVariantOverrides {
+    lowered: true;
+  }
 }
 
 const Fab = styled(MuiFab, {
   name: 'M3Fab',
   slot: 'Root',
 })(({ theme, variant, size, color }) => ({
-  boxShadow: theme.shadows[3],
+  boxShadow: theme.shadows[variant === 'lowered' ? 0 : 3],
   textTransform: 'none',
   // fab size
   height: '56px',
@@ -55,7 +59,7 @@ const Fab = styled(MuiFab, {
   backgroundColor: theme.palette.primary.container,
   color: theme.palette.primary.onContainer,
   '&:hover': {
-    boxShadow: theme.shadows[4],
+    boxShadow: theme.shadows[variant === 'lowered' ? 2 : 4],
     backgroundColor: mixLayer(
       theme.palette.primary.container,
       theme.palette.primary.onContainer,
@@ -63,7 +67,7 @@ const Fab = styled(MuiFab, {
     ),
   },
   '&:active': {
-    boxShadow: theme.shadows[3],
+    boxShadow: theme.shadows[variant === 'lowered' ? 1 : 3],
     backgroundColor: mixLayer(
       theme.palette.primary.container,
       theme.palette.primary.onContainer,
@@ -76,7 +80,7 @@ const Fab = styled(MuiFab, {
     backgroundColor: theme.palette[color].container,
     color: theme.palette[color].onContainer,
     '&:hover': {
-      boxShadow: theme.shadows[4],
+      boxShadow: theme.shadows[variant === 'lowered' ? 2 : 4],
       backgroundColor: mixLayer(
         theme.palette[color].container,
         theme.palette[color].onContainer,
@@ -84,7 +88,7 @@ const Fab = styled(MuiFab, {
       ),
     },
     '&:active': {
-      boxShadow: theme.shadows[3],
+      boxShadow: theme.shadows[variant === 'lowered' ? 1 : 3],
       backgroundColor: mixLayer(
         theme.palette[color].container,
         theme.palette[color].onContainer,
@@ -96,7 +100,7 @@ const Fab = styled(MuiFab, {
     backgroundColor: theme.palette.surface.main,
     color: theme.palette.primary.main,
     '&:hover': {
-      boxShadow: theme.shadows[4],
+      boxShadow: theme.shadows[variant === 'lowered' ? 2 : 4],
       backgroundColor: mixLayer(
         theme.palette.surface.main,
         theme.palette.primary.onContainer,
@@ -104,7 +108,7 @@ const Fab = styled(MuiFab, {
       ),
     },
     '&:active': {
-      boxShadow: theme.shadows[3],
+      boxShadow: theme.shadows[variant === 'lowered' ? 1 : 3],
       backgroundColor: mixLayer(
         theme.palette.surface.main,
         theme.palette.surface.on,

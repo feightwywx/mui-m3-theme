@@ -52,68 +52,113 @@ const FabPreviewTemplate: ComponentStory<typeof Fab> = (args) => {
                 Fabs
               </Typography>
               <Stack direction="row" spacing={2}>
-                <Fab color="primary" size="large">
+                <Fab
+                  color="primary"
+                  size="large"
+                  variant={args.variant ?? 'circular'}
+                >
                   <AddIcon />
                 </Fab>
-                <Fab color="primary" size="medium">
+                <Fab
+                  color="primary"
+                  size="medium"
+                  variant={args.variant ?? 'circular'}
+                >
                   <AddIcon />
                 </Fab>
-                <Fab variant="extended" color="primary">
-                  <AddIcon />
-                  Extended Fab
-                </Fab>
-                <Fab size="small" color="primary">
-                  <AddIcon />
-                </Fab>
-              </Stack>
-
-              <Stack direction="row" spacing={2}>
-                <Fab color="secondary" size="large">
-                  <AddIcon />
-                </Fab>
-                <Fab color="secondary" size="medium">
-                  <AddIcon />
-                </Fab>
-                <Fab color="secondary" variant="extended">
-                  <AddIcon />
-                  Extended Fab
-                </Fab>
-                <Fab color="secondary" size="small">
-                  <AddIcon />
-                </Fab>
-              </Stack>
-
-              <Stack direction="row" spacing={2}>
-                <Fab color="tertiary" size="large">
-                  <AddIcon />
-                </Fab>
-                <Fab color="tertiary" size="medium">
-                  <AddIcon />
-                </Fab>
-                <Fab color="tertiary" variant="extended">
-                  <AddIcon />
-                  Extended Fab
-                </Fab>
-                <Fab color="tertiary" size="small">
+                {!args.variant && (
+                  <Fab color="primary" variant="extended">
+                    <AddIcon />
+                    Extended Fab
+                  </Fab>
+                )}
+                <Fab
+                  color="primary"
+                  size="small"
+                  variant={args.variant ?? 'circular'}
+                >
                   <AddIcon />
                 </Fab>
               </Stack>
 
               <Stack direction="row" spacing={2}>
-                <Fab color="surface" size="large">
+                <Fab
+                  color="secondary"
+                  size="large"
+                  variant={args.variant ?? 'circular'}
+                >
                   <AddIcon />
                 </Fab>
-                <Fab color="surface" size="medium">
+                <Fab
+                  color="secondary"
+                  size="medium"
+                  variant={args.variant ?? 'circular'}
+                >
                   <AddIcon />
                 </Fab>
-                <Fab color="surface" variant="extended">
-                  <AddIcon />
-                  Extended Fab
-                </Fab>
-                <Fab color="surface" size="small">
+                {!args.variant && (
+                  <Fab color="secondary" variant="extended">
+                    <AddIcon />
+                    Extended Fab
+                  </Fab>
+                )}
+                <Fab
+                  color="secondary"
+                  size="small"
+                  variant={args.variant ?? 'circular'}
+                >
                   <AddIcon />
                 </Fab>
               </Stack>
+
+              <Stack direction="row" spacing={2}>
+                <Fab
+                  color="tertiary"
+                  size="large"
+                  variant={args.variant ?? 'circular'}
+                >
+                  <AddIcon />
+                </Fab>
+                <Fab
+                  color="tertiary"
+                  size="medium"
+                  variant={args.variant ?? 'circular'}
+                >
+                  <AddIcon />
+                </Fab>
+                {!args.variant && (
+                  <Fab color="tertiary" variant="extended">
+                    <AddIcon />
+                    Extended Fab
+                  </Fab>
+                )}
+                <Fab
+                  color="tertiary"
+                  size="small"
+                  variant={args.variant ?? 'circular'}
+                >
+                  <AddIcon />
+                </Fab>
+              </Stack>
+
+              {!args.variant && (
+                <Stack direction="row" spacing={2}>
+                  <Fab color="surface" size="large">
+                    <AddIcon />
+                  </Fab>
+                  <Fab color="surface" size="medium">
+                    <AddIcon />
+                  </Fab>
+
+                  <Fab color="surface" variant="extended">
+                    <AddIcon />
+                    Extended Fab
+                  </Fab>
+                  <Fab color="surface" size="small">
+                    <AddIcon />
+                  </Fab>
+                </Stack>
+              )}
             </Stack>
           </Grid>
         </Grid>
@@ -123,3 +168,12 @@ const FabPreviewTemplate: ComponentStory<typeof Fab> = (args) => {
 };
 
 export const FabView = FabPreviewTemplate.bind({});
+export const LoweredFabView = FabPreviewTemplate.bind({});
+
+FabView.args = {
+  variant: '',
+};
+
+LoweredFabView.args = {
+  variant: 'lowered',
+};
