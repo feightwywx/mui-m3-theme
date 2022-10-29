@@ -1,22 +1,14 @@
 # mui-m3-theme
 [Material Design 3](https://m3.material.io/) components, theme for [MUI](https://github.com/mui-org/material-ui) react components.
 
-# ⚠️Deprecated!
-This project has been deprecated. The MUI(previously Material-UI) team is preparing to support Material Design 3(Material You) in MUI V6.
-
-## Demo
-
-- [Dynamic Color System](https://limitkr.github.io/palette)
-- [Components](https://limitkr.github.io/button)
-
 ## Quick Start
 
 ### Install
 ```bash
 # using npm:
-npm i mui-m3-theme
+npm i @feightwywx/mui-m3-theme
 # or using yarn package manager:
-yarn add mui-m3-theme
+yarn add @feightwywx/mui-m3-theme
 ```
 
 ### Storybook Preview
@@ -76,21 +68,22 @@ export default function App() {
   )
 }
 ```
-<!-- Status -> ⚡️On Progress 🚧WIP 🗒Planned ❌-->
+
 ## Status
 - ### [Material Design 3 Components](https://m3.material.io/components/all-buttons)
 
-| Components        | Status       | Version |
-|-------------------|--------------|---------|
-| Buttons           | 🚧WIP        |v0.1     |
-| Cards             | 🚧WIP        |v0.2     |
-| Chips             | 🚧WIP        |v0.2     |
-| Dialogs           | 🚧WIP        |v0.2     |
-| Navigation bar    | ⚡️On Progress|    -    |
-| Navigation drawer | 🚧WIP         |v0.2    |
-| Navigation rail   | 🗒Planned     |    -    |
-| Top app bar       | 🗒Planned     |    -    |
-| Widgets           | ❌            |    -    |
+- [x] Buttons
+  - [x] Common Buttons
+  - [x] FAB
+  - [x] Extended Fab
+  - [ ] Icon Buttons
+  - [ ] Segmented Buttons
+- [x] Cards
+- [x] Chips
+- [x] Dialogs
+- [x] Navigation Drawer
+- [x] Navigation Rail
+
 
 - ### [MUI Components](https://mui.com/getting-started/supported-components/)
 
