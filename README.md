@@ -1,14 +1,20 @@
 # mui-m3-theme
 [Material Design 3](https://m3.material.io/) components, theme for [MUI](https://github.com/mui-org/material-ui) react components.
 
+[Original repo by limitkr](https://github.com/limitkr/mui-m3-theme) is deprecated, this is a fork.
+
+## Demo
+
+Under construction.
+
 ## Quick Start
 
 ### Install
 ```bash
 # using npm:
-npm i @feightwywx/mui-m3-theme
+npm i @dotdirewolf/mui-m3-theme
 # or using yarn package manager:
-yarn add @feightwywx/mui-m3-theme
+yarn add @dotdirewolf/mui-m3-theme
 ```
 
 ### Storybook Preview
@@ -84,12 +90,6 @@ export default function App() {
 - [x] Navigation Drawer
 - [x] Navigation Rail
 
-
-- ### [MUI Components](https://mui.com/getting-started/supported-components/)
-
-There are no specific plans yet.
-
-
 ## Tutorials
 
-Work In Process. Preview is [here](https://github.com/limitkr/mui-m3-theme/wiki/Tutorials).
+Work In Process. Preview is [here](https://github.com/feightwywx/mui-m3-theme/wiki/Tutorials).

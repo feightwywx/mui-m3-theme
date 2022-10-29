@@ -1,5 +1,5 @@
 {
-  "name": "mui-m3-theme",
+  "name": "@dotdirewolf/mui-m3-theme",
   "version": "0.2.0",
   "main": "build/index.js",
   "module": "build/index.esm.js",
@@ -20,8 +20,8 @@
     "typescript"
   ],
   "bugs": {
-    "url": "https://github.com/limitkr/mui-m3-theme/issues",
-    "email": "d.winifired9078@gmail.com"
+    "url": "https://github.com/feightwywx/mui-m3-theme/issues",
+    "email": "canis@direcore.xyz"
   },
   "scripts": {
     "rollup": "rm -rf build && rollup -c",
@@ -32,11 +32,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/limitkr/mui-m3-theme"
+    "url": "https://github.com/feightwywx/mui-m3-theme"
   },
   "author": {
-    "name": "Yong In Kim",
-    "email": "d.winifired9078@gmail.com"
+    "name": ".direwolf",
+    "email": "canis@direcore.xyz"
   },
   "license": "MIT",
   "devDependencies": {
