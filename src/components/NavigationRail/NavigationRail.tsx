@@ -1,7 +1,10 @@
-import { Box, useTheme, Stack } from '@mui/material';
+import { Box, useTheme, Stack, ListItemBaseProps } from '@mui/material';
 import React from 'react';
 
-function NavigationRail({ children, ...props }: { children: React.ReactNode }) {
+function NavigationRail({
+  children,
+  ...props
+}: React.PropsWithChildren<ListItemBaseProps>) {
   const theme = useTheme();
 
   return (

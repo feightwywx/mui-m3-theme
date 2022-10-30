@@ -63,6 +63,7 @@ function NavigationRailItem({
     },
   });
 
+  // TODO ripple effect
   return (
     <RailItemBox {...props}>
       <div className="iconDiv">{icon}</div>
