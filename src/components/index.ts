@@ -3,5 +3,7 @@ export * from './Cards';
 export * from './Chips';
 export * from './Dialogs';
 export * from './Drawer';
+export * from './Fab';
 export * from './ListItem';
 export * from './NavigationDrawer';
+export * from './NavigationRail';
