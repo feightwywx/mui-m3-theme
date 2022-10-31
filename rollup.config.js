@@ -43,4 +43,5 @@ export default {
       ],
     }),
   ],
+  external: [/@mui\/.*/],
 };
