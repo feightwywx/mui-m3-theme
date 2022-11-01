@@ -10,7 +10,7 @@ function NavigationRail({
   return (
     <Box
       style={{
-        position: 'absolute',
+        position: 'fixed',
         height: '100%',
         width: '80px',
         top: '0',
