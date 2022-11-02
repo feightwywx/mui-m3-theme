@@ -96,7 +96,7 @@ export const createM3Palette = (rgbColor: RGBColor): M3Palette => {
  * import { createTheme, ThemeProvider } from '@mui/material';
  * import { createM3Palette, convertM3ToMuiPalette } from 'mui-m3-theme'
  *
- * const palette = createM3Palette(rgb).light;
+ * const palette = createM3Palette(rgb)[mode];
  * const muiPalette = convertM3ToMuiPalette(palette);
  *
  * const myTheme = createTheme({ palette: { ...muiPalette } });
@@ -110,38 +110,41 @@ export const createM3Palette = (rgbColor: RGBColor): M3Palette => {
  * }
  * ```
  */
-export const convertM3ToMuiPalette = (m3Palette: M3Palette): PaletteOptions => {
+export const convertM3ToMuiPalette = (
+  m3Palette: M3Palette,
+  mode: 'light' | 'dark' = 'light'
+): PaletteOptions => {
   const muiPalette = {
     primary: {
-      main: m3Palette.light.primary,
-      on: m3Palette.light.onPrimary,
-      container: m3Palette.light.primaryContainer,
-      onContainer: m3Palette.light.onPrimaryContainer,
+      main: m3Palette[mode].primary,
+      on: m3Palette[mode].onPrimary,
+      container: m3Palette[mode].primaryContainer,
+      onContainer: m3Palette[mode].onPrimaryContainer,
     },
     secondary: {
-      main: m3Palette.light.secondary,
-      on: m3Palette.light.onSecondary,
-      container: m3Palette.light.secondaryContainer,
-      onContainer: m3Palette.light.onSecondaryContainer,
+      main: m3Palette[mode].secondary,
+      on: m3Palette[mode].onSecondary,
+      container: m3Palette[mode].secondaryContainer,
+      onContainer: m3Palette[mode].onSecondaryContainer,
     },
     tertiary: {
-      main: m3Palette.light.tertiary,
-      on: m3Palette.light.onTertiary,
-      container: m3Palette.light.tertiaryContainer,
-      onContainer: m3Palette.light.onTertiaryContainer,
+      main: m3Palette[mode].tertiary,
+      on: m3Palette[mode].onTertiary,
+      container: m3Palette[mode].tertiaryContainer,
+      onContainer: m3Palette[mode].onTertiaryContainer,
     },
     surface: {
-      main: m3Palette.light.surface,
-      on: m3Palette.light.onSurface,
-      variant: m3Palette.light.surfaceVariant,
-      onVariant: m3Palette.light.onSurfaceVariant,
+      main: m3Palette[mode].surface,
+      on: m3Palette[mode].onSurface,
+      variant: m3Palette[mode].surfaceVariant,
+      onVariant: m3Palette[mode].onSurfaceVariant,
     },
     background: {
-      default: m3Palette.light.background,
-      paper: m3Palette.light.onBackground,
+      default: m3Palette[mode].background,
+      paper: m3Palette[mode].onBackground,
     },
     outline: {
-      main: m3Palette.light.outline,
+      main: m3Palette[mode].outline,
     },
     tonalOffset: 0.1,
     text: {},

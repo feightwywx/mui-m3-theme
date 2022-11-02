@@ -75,8 +75,11 @@ export const MaterialDesign3Theme = createTheme({
  * @returns Material UI `Theme`.
  */
 // eslint-disable-next-line camelcase
-export const unstable_createMaterialDesign3Theme = (m3Palette: M3Palette) => {
-  const muiPalette = convertM3ToMuiPalette(m3Palette);
+export const unstable_createMaterialDesign3Theme = (
+  m3Palette: M3Palette,
+  mode: 'light' | 'dark' = 'light'
+) => {
+  const muiPalette = convertM3ToMuiPalette(m3Palette, mode);
   return createTheme({
     typography: {
       fontFamily: ['Roboto', 'Manrope'].join(', '),
