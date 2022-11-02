@@ -25,6 +25,7 @@ const Card = React.forwardRef<
       <CardRoot
         onMouseDown={onRippleStart}
         onMouseUp={onRippleStop}
+        onMouseLeave={onRippleStop}
         ref={ref}
         ownerState={ownerState}
         {...other}

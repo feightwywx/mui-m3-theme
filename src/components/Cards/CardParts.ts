@@ -11,7 +11,10 @@ import { styled } from '@mui/material/styles';
 import { mixLayer } from '../../asset/functions';
 
 // eslint-disable-next-line react/require-default-props
-export type M3CardProps = MuiCardProps & { clickable?: boolean };
+export type M3CardProps = MuiCardProps & {
+  clickable?: boolean;
+  hoverable?: boolean;
+};
 
 declare module '@mui/material/Paper' {
   interface PaperPropsVariantOverrides {
@@ -34,50 +37,56 @@ export const CardRoot = styled(MuiCard, {
   }),
   ...(ownerState.variant === 'contained' && {
     backgroundColor: theme.palette.surface.variant,
-    '&:hover': {
-      backgroundColor: mixLayer(
-        theme.palette.surface.variant,
-        theme.palette.surface.on,
-        0.08
-      ),
-      boxShadow: theme.shadows[1],
-      '@media (hover: none)': {
-        backgroundColor: 'transparent',
+    ...(ownerState.hoverable && {
+      '&:hover': {
+        backgroundColor: mixLayer(
+          theme.palette.surface.variant,
+          theme.palette.surface.on,
+          0.08
+        ),
+        boxShadow: theme.shadows[1],
+        '@media (hover: none)': {
+          backgroundColor: 'transparent',
+        },
       },
-    },
+    }),
   }),
   ...(ownerState.variant === 'outlined' && {
     backgroundColor: theme.palette.surface.main,
     border: `1px solid ${theme.palette.outline.main}`,
-    '&:hover': {
-      backgroundColor: mixLayer(
-        theme.palette.surface.main,
-        theme.palette.surface.on,
-        0.08
-      ),
-      boxShadow: theme.shadows[2],
-      '@media (hover: none)': {
-        backgroundColor: 'transparent',
+    ...(ownerState.hoverable && {
+      '&:hover': {
+        backgroundColor: mixLayer(
+          theme.palette.surface.main,
+          theme.palette.surface.on,
+          0.08
+        ),
+        boxShadow: theme.shadows[2],
+        '@media (hover: none)': {
+          backgroundColor: 'transparent',
+        },
       },
-    },
+    }),
   }),
   ...(ownerState.variant === 'elevated' && {
     backgroundColor: theme.palette.surface.main,
     boxShadow: theme.shadows[1],
-    '&:hover': {
-      backgroundColor: mixLayer(
-        theme.palette.surface.main,
-        theme.palette.surface.on,
-        0.08
-      ),
-      boxShadow: theme.shadows[2],
-      '@media (hover: none)': {
-        backgroundColor: 'transparent',
+    ...(ownerState.hoverable && {
+      '&:hover': {
+        backgroundColor: mixLayer(
+          theme.palette.surface.main,
+          theme.palette.surface.on,
+          0.08
+        ),
+        boxShadow: theme.shadows[2],
+        '@media (hover: none)': {
+          backgroundColor: 'transparent',
+        },
+        '&:active': {
+          boxShadow: theme.shadows[1],
+        },
       },
-      '&:active': {
-        boxShadow: theme.shadows[1],
-      },
-    },
+    }),
   }),
 }));
 
