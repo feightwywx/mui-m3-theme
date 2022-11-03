@@ -33,6 +33,8 @@ const Button = styled(MuiButton, {
   ...(variant === 'contained' &&
     color !== undefined &&
     color !== 'inherit' && {
+      backgroundColor: theme.palette[color].main,
+      color: theme.palette[color].on,
       '&:hover': {
         boxShadow: theme.shadows[1],
         '@media (hover: none)': {
