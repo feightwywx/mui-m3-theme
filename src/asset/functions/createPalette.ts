@@ -1,5 +1,6 @@
 import { CorePalette } from '@elemental-design/material-color-utilities';
 import { PaletteOptions } from '@mui/material/styles';
+import chroma from 'chroma-js';
 import { createTonalPalette } from './createTonalPalette';
 import { fromRGBto32 } from './fromRGBto32';
 import { M3Palette, RGBColor } from './types';
@@ -147,7 +148,12 @@ export const convertM3ToMuiPalette = (
       main: m3Palette[mode].outline,
     },
     tonalOffset: 0.1,
-    text: {},
+    text: {
+      primary: m3Palette[mode].onSurface,
+      secondary: m3Palette[mode].onSurfaceVariant,
+      disabled: chroma(m3Palette[mode].onSurface).alpha(0.38).css(),
+      hint: chroma(m3Palette[mode].onSurface).alpha(0.38).css(),
+    },
   };
   return muiPalette;
 };
