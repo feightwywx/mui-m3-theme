@@ -15,6 +15,7 @@ import {
 } from '../../asset';
 import AddIcon from '@mui/icons-material/Add';
 import Fab from './Fab';
+import { useDarkMode } from 'storybook-dark-mode';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -32,8 +33,12 @@ const FabPreviewTemplate: ComponentStory<typeof Fab> = (args) => {
   const handleChangeComplete = (color: ColorResult) => {
     setHexColor(color.rgb);
   };
+  const prefersDarkMode = useDarkMode();
   const m3Palette = createM3Palette(hexColor);
-  const myTheme = unstable_createMaterialDesign3Theme(m3Palette);
+  const myTheme = React.useMemo(() => unstable_createMaterialDesign3Theme(
+    m3Palette, prefersDarkMode ? 'dark' : 'light'
+  ), [m3Palette, prefersDarkMode]);
+  
   return (
     <ThemeProvider theme={myTheme}>
       <CssBaseline />

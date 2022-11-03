@@ -23,6 +23,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import NavigationRail from './NavigationRail';
 import NavigationRailItem from './NavigationRailItem';
 import Fab from '../Fab/Fab';
+import { useDarkMode } from 'storybook-dark-mode';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -42,8 +43,13 @@ const NavRailPreviewTemplate: ComponentStory<typeof NavigationRail> = (
   const handleChangeComplete = (color: ColorResult) => {
     setHexColor(color.rgb);
   };
+
+  const prefersDarkMode = useDarkMode();
   const m3Palette = createM3Palette(hexColor);
-  const myTheme = unstable_createMaterialDesign3Theme(m3Palette);
+  const myTheme = React.useMemo(() => unstable_createMaterialDesign3Theme(
+    m3Palette, prefersDarkMode ? 'dark' : 'light'
+  ), [m3Palette, prefersDarkMode]);
+
   return (
     <ThemeProvider theme={myTheme}>
       <CssBaseline />
@@ -54,7 +60,7 @@ const NavRailPreviewTemplate: ComponentStory<typeof NavigationRail> = (
               marginTop: '48px',
             }}
           >
-            <MenuIcon />
+            <MenuIcon style={{ color: myTheme.palette.surface.on }} />
           </IconButton>
           <Fab variant="lowered" color='secondary' style={{ marginBottom: '28px' }}>
             <SearchIcon />

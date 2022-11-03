@@ -6,6 +6,7 @@ import {
   Typography,
   Stack,
   ThemeProvider,
+  useMediaQuery,
 } from '@mui/material';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ColorResult, RGBColor, SketchPicker } from 'react-color';
@@ -15,6 +16,7 @@ import {
 } from '../../asset';
 import AddIcon from '@mui/icons-material/Add';
 import Button from './Button';
+import { useDarkMode } from 'storybook-dark-mode';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -32,8 +34,12 @@ const ButtonPreviewTemplate: ComponentStory<typeof Button> = (args) => {
   const handleChangeComplete = (color: ColorResult) => {
     setHexColor(color.rgb);
   };
+  const prefersDarkMode = useDarkMode();
   const m3Palette = createM3Palette(hexColor);
-  const myTheme = unstable_createMaterialDesign3Theme(m3Palette);
+  const myTheme = React.useMemo(() => unstable_createMaterialDesign3Theme(
+    m3Palette, prefersDarkMode ? 'dark' : 'light'
+  ), [m3Palette, prefersDarkMode])
+  
   return (
     <ThemeProvider theme={myTheme}>
       <CssBaseline />
@@ -45,7 +51,7 @@ const ButtonPreviewTemplate: ComponentStory<typeof Button> = (args) => {
           />
           <Grid container item spacing={2}>
             <Grid item xs>
-              <Typography sx={{ mb: 2 }} variant="h3" fontWeight="bold">
+              <Typography sx={{ mb: 2 }} variant="h3" fontWeight="bold" color={myTheme.palette.surface.on}>
                 Buttons
               </Typography>
               <Stack direction="row" spacing={2}>

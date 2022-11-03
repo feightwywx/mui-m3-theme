@@ -20,6 +20,8 @@ import Drawer from './Drawer';
 import { ListItem, ListItemIcon, ListItemText } from '../ListItem';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { useDarkMode } from 'storybook-dark-mode';
+
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'ReactComponentLibrary/Drawer',
@@ -47,8 +49,12 @@ const DrawerPreviewTemplate: ComponentStory<typeof Drawer> = (args) => {
     setOpen(false);
   };
 
+  const prefersDarkMode = useDarkMode();
   const m3Palette = createM3Palette(hexColor);
-  const myTheme = unstable_createMaterialDesign3Theme(m3Palette);
+  const myTheme = React.useMemo(() => unstable_createMaterialDesign3Theme(
+    m3Palette, prefersDarkMode ? 'dark' : 'light'
+  ), [m3Palette, prefersDarkMode]);
+
   return (
     <ThemeProvider theme={myTheme}>
       <CssBaseline />

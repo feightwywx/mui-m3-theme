@@ -14,6 +14,7 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import SendIcon from '@mui/icons-material/Send';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { useDarkMode } from 'storybook-dark-mode';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -87,8 +88,12 @@ const NavigationDrawerPreview: ComponentStory<typeof NavigationDrawer> = (
     setOpen(false);
   };
 
+  const prefersDarkMode = useDarkMode();
   const m3Palette = createM3Palette(hexColor);
-  const myTheme = unstable_createMaterialDesign3Theme(m3Palette);
+  const myTheme = React.useMemo(() => unstable_createMaterialDesign3Theme(
+    m3Palette, prefersDarkMode ? 'dark' : 'light'
+  ), [m3Palette, prefersDarkMode]);
+  
   return (
     <ThemeProvider theme={myTheme}>
       <CssBaseline />

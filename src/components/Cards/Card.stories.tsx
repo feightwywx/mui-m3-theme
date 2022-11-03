@@ -15,6 +15,7 @@ import {
 } from '../../asset';
 import { Card, CardContent, CardActions } from '.';
 import { Button } from '../Button';
+import { useDarkMode } from 'storybook-dark-mode';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -32,13 +33,16 @@ const CardPreviewTemplate: ComponentStory<typeof Card> = (args) => {
   const handleChangeComplete = (color: ColorResult) => {
     setHexColor(color.rgb);
   };
+  const prefersDarkMode = useDarkMode();
   const m3Palette = createM3Palette(hexColor);
-  const myTheme = unstable_createMaterialDesign3Theme(m3Palette);
+  const myTheme = React.useMemo(() => unstable_createMaterialDesign3Theme(
+    m3Palette, prefersDarkMode ? 'dark' : 'light'
+  ), [m3Palette, prefersDarkMode])
 
   return (
     <ThemeProvider theme={myTheme}>
       <CssBaseline />
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, color: myTheme.palette.surface.on }}>
         <Grid container spacing={2}>
           <SketchPicker
             color={hexColor}
@@ -59,11 +63,12 @@ const CardPreviewTemplate: ComponentStory<typeof Card> = (args) => {
                   sx={{ maxWidth: '275px', position: 'relative' }}
                   variant={args.variant} // color="primary"
                   clickable
+                  hoverable={args.hoverable}
                 >
                   <CardContent>
                     <Typography
                       sx={{ fontSize: 14 }}
-                      color="text.secondary"
+                      color="surface.onVariant"
                       gutterBottom
                     >
                       {args.children}
@@ -71,7 +76,7 @@ const CardPreviewTemplate: ComponentStory<typeof Card> = (args) => {
                     <Typography fontWeight="bold" variant="h5" component="div">
                       Title
                     </Typography>
-                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                    <Typography sx={{ mb: 1.5 }} color="surface.onVariant">
                       Subhead
                     </Typography>
                     <Typography variant="body2">
@@ -81,7 +86,7 @@ const CardPreviewTemplate: ComponentStory<typeof Card> = (args) => {
                   </CardContent>
                 </Card>
 
-                <Card sx={{ maxWidth: '300px' }} variant={args.variant}>
+                <Card sx={{ maxWidth: '300px' }} variant={args.variant} hoverable={args.hoverable}>
                   <CardContent>
                     <Typography
                       sx={{ fontSize: 14 }}
@@ -122,14 +127,17 @@ export const ElevatedCardView = CardPreviewTemplate.bind({});
 ContainedCardView.args = {
   children: 'Filled Card',
   variant: 'contained',
+  hoverable: false,
 };
 
 OutlinedCardView.args = {
   children: 'Outlined Card',
   variant: 'outlined',
+  hoverable: false,
 };
 
 ElevatedCardView.args = {
   children: 'Elevated Card',
   variant: 'elevated',
+  hoverable: false,
 };
