@@ -1,6 +1,6 @@
 {
   "name": "@dotdirewolf/mui-m3-theme",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "build/index.js",
   "module": "build/index.esm.js",
   "files": [
@@ -28,7 +28,8 @@
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "generate": "node ./util/create-component"
+    "yalc": "rm -rf build && rollup -c && yalc push",
+    "yalc:public": "rm -rf build && rollup -c && yalc public"
   },
   "repository": {
     "type": "git",
