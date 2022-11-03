@@ -28,7 +28,7 @@ declare module '@mui/material/Button' {
 const Button = styled(MuiButton, {
   name: 'M3Button',
   slot: 'Root',
-})(({ theme, variant, color, startIcon }) => ({
+})(({ theme, variant, color, startIcon, disabled }) => ({
   boxShadow: variant === 'elevated' ? theme.shadows[2] : 'none',
   ...(variant === 'contained' &&
     color !== undefined &&
@@ -54,6 +54,11 @@ const Button = styled(MuiButton, {
         ),
         boxShadow: 'none',
       },
+      ...(disabled && {
+        backgroundColor: chroma(theme.palette.surface.on).alpha(0.12).css(),
+        color: chroma(theme.palette.surface.on).alpha(0.38).css(),
+        boxShadow: theme.shadows[0],
+      }),
     }),
   ...(variant === 'elevated' &&
     color !== undefined &&
@@ -81,6 +86,11 @@ const Button = styled(MuiButton, {
           0.12
         ),
       },
+      ...(disabled && {
+        color: chroma(theme.palette.surface.on).alpha(0.38).css(),
+        backgroundColor: chroma(theme.palette.surface.on).alpha(0.12).css(),
+        boxShadow: theme.shadows[0],
+      }),
     }),
   ...(variant === 'outlined' &&
     color !== undefined &&
@@ -148,6 +158,11 @@ const Button = styled(MuiButton, {
         0.12
       ),
     },
+    ...(disabled && {
+      color: chroma(theme.palette.surface.on).alpha(0.38).css(),
+      backgroundColor: chroma(theme.palette.surface.on).alpha(0.12).css(),
+      boxShadow: theme.shadows[0],
+    }),
   }),
 })) as React.ComponentType<MuiButtonProps>;
 

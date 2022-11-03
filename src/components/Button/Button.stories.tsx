@@ -49,13 +49,14 @@ const ButtonPreviewTemplate: ComponentStory<typeof Button> = (args) => {
                 Buttons
               </Typography>
               <Stack direction="row" spacing={2}>
-                <Button variant={args.variant} color="primary">
+                <Button variant={args.variant} color="primary" disabled={args.disabled}>
                   {args.children}
                 </Button>
                 <Button
                   startIcon={<AddIcon />}
                   variant={args.variant}
                   color="primary"
+                  disabled={args.disabled}
                 >
                   {args.children}
                 </Button>
@@ -65,13 +66,14 @@ const ButtonPreviewTemplate: ComponentStory<typeof Button> = (args) => {
           <Grid container item spacing={2}>
             <Grid item xs>
               <Stack direction="row" spacing={2}>
-                <Button variant={args.variant} color="secondary">
+                <Button variant={args.variant} color="secondary" disabled={args.disabled}>
                   {args.children}
                 </Button>
                 <Button
                   startIcon={<AddIcon />}
                   variant={args.variant}
                   color="secondary"
+                  disabled={args.disabled}
                 >
                   {args.children}
                 </Button>
@@ -81,13 +83,14 @@ const ButtonPreviewTemplate: ComponentStory<typeof Button> = (args) => {
           <Grid container item spacing={2}>
             <Grid item xs>
               <Stack direction="row" spacing={2}>
-                <Button variant={args.variant} color="tertiary">
+                <Button variant={args.variant} color="tertiary" disabled={args.disabled}>
                   {args.children}
                 </Button>
                 <Button
                   startIcon={<AddIcon />}
                   variant={args.variant}
                   color="tertiary"
+                  disabled={args.disabled}
                 >
                   {args.children}
                 </Button>
@@ -109,24 +112,29 @@ export const TonalButtonView = ButtonPreviewTemplate.bind({});
 FilledButtonView.args = {
   children: 'Filled button',
   variant: 'contained',
+  disabled: false,
 };
 
 ElevatedButtonView.args = {
   children: 'Elevated button',
   variant: 'elevated',
+  disabled: false,
 };
 
 OutlinedButtonView.args = {
   children: 'Outlined button',
   variant: 'outlined',
+  disabled: false,
 };
 
 TextButtonView.args = {
   children: 'Text button',
   variant: 'text',
+  disabled: false,
 };
 
 TonalButtonView.args = {
   children: 'Tonal button',
   variant: 'tonal',
+  disabled: false,
 };
