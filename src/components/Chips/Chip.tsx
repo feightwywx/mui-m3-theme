@@ -12,11 +12,11 @@ const ChipRoot = styled(MuiChip, {
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
 })<{ ownerState: M3ChipProps }>(({ theme, ownerState }) => ({
+  ...theme.typography.labelLarge,
   '& .MuiChip-icon': { color: theme.palette.secondary.onContainer },
   border: `1px solid ${theme.palette.outline.main}`,
   backgroundColor: theme.palette.surface.main,
   color: theme.palette.surface.on,
-  fontWeight: 'bold',
   boxShadow: 'none',
   borderRadius: '8px',
   '&:hover': {

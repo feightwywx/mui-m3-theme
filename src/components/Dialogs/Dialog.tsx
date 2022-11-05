@@ -6,6 +6,10 @@ import {
   DialogTitleProps as MuiDialogTitleProps,
   DialogContentTextProps as MuiDialogContentTextProps,
   ButtonProps,
+  DialogContent as MuiDialogContent,
+  DialogContentProps as MuiDialogContentProps,
+  DialogActions as MuiDialogActions,
+  DialogActionsProps as MuiDialogActionsProps,
 } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import React from 'react';
@@ -17,12 +21,11 @@ const DialogRoot = styled(MuiDialog, {
 })(({ theme }) => ({
   '& .MuiPaper-root': {
     borderRadius: '28px',
-    padding: '8px',
+    padding: '24px',
     backgroundColor: theme.palette.surface.main,
     minWidth: '280px',
     maxWidth: '560px',
     boxShadow: theme.shadows[0],
-    fontFamily: 'Roboto',
   },
 }));
 
@@ -51,8 +54,10 @@ export const DialogTitle = styled(MuiDialogTitle, {
   slot: 'Root',
 })(({ theme }) => ({
   color: theme.palette.surface.on,
-  fontSize: 24,
-  fontWeight: 400,
+  ...theme.typography.headlineSmall,
+  fontFamily: 'Roboto',
+  padding: 0,
+  marginBottom: 16,
 })) as React.ComponentType<MuiDialogTitleProps>;
 
 export const DialogContentText = styled(MuiDialogContentText, {
@@ -60,6 +65,7 @@ export const DialogContentText = styled(MuiDialogContentText, {
   slot: 'Root',
 })(({ theme }) => ({
   color: theme.palette.surface.onVariant,
+  ...theme.typography.bodyMedium,
 })) as React.ComponentType<MuiDialogContentTextProps>;
 
 export function DialogActionButton({
@@ -80,5 +86,20 @@ export function DialogActionButton({
     </Button>
   );
 }
+
+export const DialogContent = styled(MuiDialogContent, {
+  name: 'M3DialogContent',
+  slot: 'Root',
+})(({ theme }) => ({
+  padding: 0,
+  marginBottom: 24,
+})) as React.ComponentType<MuiDialogContentProps>;
+
+export const DialogActions = styled(MuiDialogActions, {
+  name: 'M3DialogActions',
+  slot: 'Root',
+})(({ theme }) => ({
+  padding: 0,
+}));
 
 export default Dialog;

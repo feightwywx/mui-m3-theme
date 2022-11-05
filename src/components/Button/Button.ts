@@ -29,6 +29,7 @@ const Button = styled(MuiButton, {
   name: 'M3Button',
   slot: 'Root',
 })(({ theme, variant, color, startIcon, disabled }) => ({
+  ...(theme.typography.labelLarge),
   boxShadow: variant === 'elevated' ? theme.shadows[2] : 'none',
   ...(variant === 'contained' &&
     color !== undefined &&

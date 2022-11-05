@@ -6,8 +6,6 @@ import {
   Typography,
   Stack,
   ThemeProvider,
-  DialogContent,
-  DialogActions,
 } from '@mui/material';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ColorResult, RGBColor, SketchPicker } from 'react-color';
@@ -17,7 +15,13 @@ import {
 } from '../../asset';
 import AddIcon from '@mui/icons-material/Add';
 import { Button } from '../Button';
-import Dialog, { DialogTitle, DialogContentText, DialogActionButton } from './Dialog';
+import Dialog, {
+  DialogTitle,
+  DialogContentText,
+  DialogActionButton,
+  DialogContent,
+  DialogActions,
+} from './Dialog';
 import { useDarkMode } from 'storybook-dark-mode';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -49,10 +53,15 @@ const DialogPreviewTempalte: ComponentStory<typeof Dialog> = (args) => {
 
   const prefersDarkMode = useDarkMode();
   const m3Palette = createM3Palette(hexColor);
-  const myTheme = React.useMemo(() => unstable_createMaterialDesign3Theme(
-    m3Palette, prefersDarkMode ? 'dark' : 'light'
-  ), [m3Palette, prefersDarkMode])
-  
+  const myTheme = React.useMemo(
+    () =>
+      unstable_createMaterialDesign3Theme(
+        m3Palette,
+        prefersDarkMode ? 'dark' : 'light'
+      ),
+    [m3Palette, prefersDarkMode]
+  );
+
   return (
     <ThemeProvider theme={myTheme}>
       <CssBaseline />
