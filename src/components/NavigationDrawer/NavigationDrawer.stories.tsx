@@ -18,7 +18,7 @@ import { useDarkMode } from 'storybook-dark-mode';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'ReactComponentLibrary/Navigation Drawer',
+  title: 'mui-m3-theme/Navigation Drawer',
   component: NavigationDrawer,
   argTypes: {
     items: {

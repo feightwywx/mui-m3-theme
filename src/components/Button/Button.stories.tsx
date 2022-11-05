@@ -20,7 +20,7 @@ import { useDarkMode } from 'storybook-dark-mode';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'ReactComponentLibrary/Button',
+  title: 'mui-m3-theme/Button',
   component: Button,
 } as ComponentMeta<typeof Button>;
 

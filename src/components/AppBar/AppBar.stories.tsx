@@ -22,7 +22,7 @@ import { useDarkMode } from 'storybook-dark-mode';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'ReactComponentLibrary/App Bar',
+  title: 'mui-m3-theme/App Bar',
   component: AppBar,
 } as ComponentMeta<typeof AppBar>;
 

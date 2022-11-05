@@ -19,7 +19,7 @@ import { useDarkMode } from 'storybook-dark-mode';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'ReactComponentLibrary/Chip',
+  title: 'mui-m3-theme/Chip',
   component: Chip,
 } as ComponentMeta<typeof Chip>;
 

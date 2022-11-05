@@ -19,7 +19,7 @@ import { useDarkMode } from 'storybook-dark-mode';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'ReactComponentLibrary/Card',
+  title: 'mui-m3-theme/Card',
   component: Card,
 } as ComponentMeta<typeof Card>;
 

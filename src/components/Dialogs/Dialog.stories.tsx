@@ -22,7 +22,7 @@ import { useDarkMode } from 'storybook-dark-mode';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'ReactComponentLibrary/Dialogs',
+  title: 'mui-m3-theme/Dialogs',
   component: Dialog,
 } as ComponentMeta<typeof Dialog>;
 
