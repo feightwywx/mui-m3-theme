@@ -4,6 +4,7 @@ import colors from './base/colors';
 
 import button from './components/button';
 import { M3Palette } from './functions/types';
+import { typeVariants } from './components/typography';
 
 declare module '@mui/material/styles' {
   interface TypeBackground {
@@ -47,6 +48,61 @@ declare module '@mui/material/styles' {
     background: TypeBackground;
     outline: Pick<PaletteColor, 'main'>;
   }
+  interface TypographyVariants {
+    displayLarge: React.CSSProperties;
+    displayMedium: React.CSSProperties;
+    displaySmall: React.CSSProperties;
+    headlineLarge: React.CSSProperties;
+    headlineMedium: React.CSSProperties;
+    headlineSmall: React.CSSProperties;
+    titleLarge: React.CSSProperties;
+    titleMedium: React.CSSProperties;
+    titleSmall: React.CSSProperties;
+    labelLarge: React.CSSProperties;
+    labelMedium: React.CSSProperties;
+    labelSmall: React.CSSProperties;
+    bodyLarge: React.CSSProperties;
+    bodyMedium: React.CSSProperties;
+    bodySmall: React.CSSProperties;
+  }
+  // allow configuration using `createTheme`
+  interface TypographyVariantsOptions {
+    displayLarge?: React.CSSProperties;
+    displayMedium?: React.CSSProperties;
+    displaySmall?: React.CSSProperties;
+    headlineLarge?: React.CSSProperties;
+    headlineMedium?: React.CSSProperties;
+    headlineSmall?: React.CSSProperties;
+    titleLarge?: React.CSSProperties;
+    titleMedium?: React.CSSProperties;
+    titleSmall?: React.CSSProperties;
+    labelLarge?: React.CSSProperties;
+    labelMedium?: React.CSSProperties;
+    labelSmall?: React.CSSProperties;
+    bodyLarge?: React.CSSProperties;
+    bodyMedium?: React.CSSProperties;
+    bodySmall?: React.CSSProperties;
+  }
+}
+
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    displayLarge: true;
+    displayMedium: true;
+    displaySmall: true;
+    headlineLarge: true;
+    headlineMedium: true;
+    headlineSmall: true;
+    titleLarge: true;
+    titleMedium: true;
+    titleSmall: true;
+    labelLarge: true;
+    labelMedium: true;
+    labelSmall: true;
+    bodyLarge: true;
+    bodyMedium: true;
+    bodySmall: true;
+  }
 }
 
 /**
@@ -83,11 +139,30 @@ export const unstable_createMaterialDesign3Theme = (
   return createTheme({
     typography: {
       fontFamily: ['Roboto', 'Manrope'].join(', '),
+      ...typeVariants,
     },
     palette: muiPalette,
     components: {
       MuiButton: {
         ...button,
+      },
+      MuiTypography: {
+        defaultProps: {
+          variantMapping: {
+            displayLarge: 'h1',
+            displayMedium: 'h2',
+            displaySmall: 'h3',
+            headlineLarge: 'h4',
+            headlineMedium: 'h5',
+            headlineSmall: 'h6',
+            titleLarge: 'subtitle1',
+            titleMedium: 'subtitle2',
+            titleSmall: 'subtitle2',
+            bodyLarge: 'p',
+            bodyMedium: 'p',
+            bodySmall: 'p',
+          },
+        },
       },
     },
   }) as Theme;
