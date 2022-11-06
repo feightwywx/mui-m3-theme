@@ -5,6 +5,7 @@ export * from './Chips';
 export * from './Dialogs';
 export * from './Drawer';
 export * from './Fab';
+export * from './IconButton';
 export * from './ListItem';
 export * from './NavigationDrawer';
 export * from './NavigationRail';
