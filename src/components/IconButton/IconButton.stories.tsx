@@ -15,6 +15,7 @@ import {
 } from '../../asset';
 import { useDarkMode } from 'storybook-dark-mode';
 import IconButton from './IconButton';
+import TogglableIconButton from './TogglableIconButton';
 import SettingsIcon from '@mui/icons-material/Settings';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
@@ -65,13 +66,13 @@ const IconButtonPreviewTemplate: ComponentStory<typeof IconButton> = (args) => {
                 <IconButton disabled={args.disabled}>
                   <SettingsIcon />
                 </IconButton>
-                <IconButton variant='outlined' disabled={args.disabled}>
+                <IconButton variant="outlined" disabled={args.disabled}>
                   <SettingsIcon />
                 </IconButton>
-                <IconButton variant='filled' disabled={args.disabled}>
+                <IconButton variant="filled" disabled={args.disabled}>
                   <SettingsIcon />
                 </IconButton>
-                <IconButton variant='tonal' disabled={args.disabled}>
+                <IconButton variant="tonal" disabled={args.disabled}>
                   <SettingsIcon />
                 </IconButton>
               </Stack>
@@ -83,8 +84,91 @@ const IconButtonPreviewTemplate: ComponentStory<typeof IconButton> = (args) => {
   );
 };
 
+const TogglableIconButtonPreviewTemplate: ComponentStory<
+  typeof TogglableIconButton
+> = (args) => {
+  const [hexColor, setHexColor] = React.useState<RGBColor>({
+    r: 103,
+    g: 80,
+    b: 164,
+    a: 1,
+  });
+  const handleChangeComplete = (color: ColorResult) => {
+    setHexColor(color.rgb);
+  };
+  const prefersDarkMode = useDarkMode();
+  const m3Palette = createM3Palette(hexColor);
+  const myTheme = React.useMemo(
+    () =>
+      unstable_createMaterialDesign3Theme(
+        m3Palette,
+        prefersDarkMode ? 'dark' : 'light'
+      ),
+    [m3Palette, prefersDarkMode]
+  );
+
+  return (
+    <ThemeProvider theme={myTheme}>
+      <CssBaseline />
+      <Box sx={{ flexGrow: 1, mt: 8 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <SketchPicker
+              color={hexColor}
+              onChangeComplete={handleChangeComplete}
+            />
+          </Grid>
+          <Grid item>
+            <Stack spacing={2}>
+              <Typography variant="h3" fontWeight="bold">
+                Togglable Icon Buttons
+              </Typography>
+              <Stack direction="row" spacing={2}>
+                <TogglableIconButton
+                  checkedIcon={<SettingsIcon />}
+                  disabled={args.disabled}
+                >
+                  <SettingsOutlinedIcon />
+                </TogglableIconButton>
+                <TogglableIconButton
+                  checkedIcon={<SettingsIcon />}
+                  variant="outlined"
+                  disabled={args.disabled}
+                >
+                  <SettingsOutlinedIcon />
+                </TogglableIconButton>
+                <TogglableIconButton
+                  checkedIcon={<SettingsIcon />}
+                  variant="filled"
+                  disabled={args.disabled}
+                >
+                  <SettingsOutlinedIcon />
+                </TogglableIconButton>
+                <TogglableIconButton
+                  checkedIcon={<SettingsIcon />}
+                  variant="tonal"
+                  disabled={args.disabled}
+                >
+                  <SettingsOutlinedIcon />
+                </TogglableIconButton>
+              </Stack>
+            </Stack>
+          </Grid>
+        </Grid>
+      </Box>
+    </ThemeProvider>
+  );
+};
+
 export const IconButtonView = IconButtonPreviewTemplate.bind({});
+export const TogglableIconButtonView = TogglableIconButtonPreviewTemplate.bind(
+  {}
+);
 
 IconButtonView.args = {
+  disabled: false,
+};
+
+TogglableIconButtonView.args = {
   disabled: false,
 };

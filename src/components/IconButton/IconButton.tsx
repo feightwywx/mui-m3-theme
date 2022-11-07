@@ -1,17 +1,9 @@
-import {
-  IconButton as MuiIconButton,
-  IconButtonProps as MuiIconButtonProps,
-  styled,
-  useTheme,
-} from '@mui/material';
+import { IconButton as MuiIconButton, styled, useTheme } from '@mui/material';
 import chroma from 'chroma-js';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { mixLayer } from '../../asset/functions';
-
-export type M3IconButtonProps = MuiIconButtonProps & {
-  variant?: 'standard' | 'outlined' | 'filled' | 'tonal';
-};
+import { M3IconButtonProps } from './types';
 
 const IconButtonRoot = styled(MuiIconButton, {
   name: 'M3IconButton',
