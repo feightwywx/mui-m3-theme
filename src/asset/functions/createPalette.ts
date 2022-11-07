@@ -147,6 +147,11 @@ export const convertM3ToMuiPalette = (
     outline: {
       main: m3Palette[mode].outline,
     },
+    inverse: {
+      surface: m3Palette[mode].inverseSurface,
+      onSurface: m3Palette[mode].inverseOnSurface,
+      primary: m3Palette[mode].inversePrimary,
+    },
     tonalOffset: 0.1,
     text: {
       primary: m3Palette[mode].onSurface,

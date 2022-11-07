@@ -18,6 +18,11 @@ declare module '@mui/material/styles' {
     variant: string;
     onVariant: string;
   }
+  interface TypeInverse {
+    surface: string;
+    onSurface: string;
+    primary: string;
+  }
   interface SimplePaletteColorOptions {
     main: string;
     on: string;
@@ -32,6 +37,7 @@ declare module '@mui/material/styles' {
     background?: Partial<TypeBackground>;
     surface?: Partial<TypeSurface>;
     outline?: Pick<SimplePaletteColorOptions, 'main'>;
+    inverse?: Partial<TypeInverse>;
   }
   interface PaletteColor {
     main: string;
@@ -47,6 +53,7 @@ declare module '@mui/material/styles' {
     surface: TypeSurface;
     background: TypeBackground;
     outline: Pick<PaletteColor, 'main'>;
+    inverse: TypeInverse;
   }
   interface TypographyVariants {
     displayLarge: React.CSSProperties;
