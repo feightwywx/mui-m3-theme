@@ -15,8 +15,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: yarn install
+      - run: yarn install --immutable
       - run: yarn run rollup
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build-result
+          path: build
 
   publish-npm:
     needs: build
@@ -27,6 +31,10 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm publish --access=public
+      - uses: actions/download-artifact@v3
+        with:
+          name: build-result
+          path: build
+      - run: yarn publish --access=public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
