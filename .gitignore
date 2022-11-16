@@ -9,3 +9,5 @@ build
 yarn-debug.log*
 yarn-error.log*
 .vscode/*
+storybook-static
+build-storybook.log
