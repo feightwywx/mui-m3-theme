@@ -159,6 +159,7 @@ export const convertM3ToMuiPalette = (
       disabled: chroma(m3Palette[mode].onSurface).alpha(0.38).css(),
       hint: chroma(m3Palette[mode].onSurface).alpha(0.38).css(),
     },
+    divider: chroma(m3Palette[mode].onSurface).alpha(0.12).css(),
   };
   return muiPalette;
 };
