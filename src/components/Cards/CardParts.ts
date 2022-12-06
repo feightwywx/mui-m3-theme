@@ -28,6 +28,7 @@ export const CardRoot = styled(MuiCard, {
   name: 'M3Card',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
+  shouldForwardProp: (prop) => prop !== 'hoverable',
 })<{ ownerState: M3CardProps }>(({ theme, ownerState }) => ({
   transition: '0.3s',
   borderRadius: '12px',

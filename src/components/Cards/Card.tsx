@@ -44,10 +44,12 @@ const Card = React.forwardRef<
 
 Card.defaultProps = {
   clickable: false,
+  hoverable: false,
 };
 
 Card.propTypes = {
   clickable: PropTypes.bool,
+  hoverable: PropTypes.bool,
 };
 
 export default Card;
